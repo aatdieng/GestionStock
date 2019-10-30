@@ -1,0 +1,47 @@
+<h4 class="display-4">Votre Commande</h4>
+<hr>
+<form [formGroup]="detailsCommandeForm">
+  <div class="form-row">
+    <div class="form-group col">
+      <label>Produit</label>
+      <select formControlName="ProduitID" class="form-control">
+          <option selected>--Sélectionner le produit--</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Quantité</label>
+      <div class="input-group">
+        <input type="number" value="1" min="1" max="99" formControlName="Quantite" class="form-control" />
+      </div>
+    </div>
+    <div class="form-group col">
+      <label>Prix</label>
+      <div class="input-group">
+        <input type="text" formControlName="Prix" class="form-control" readonly />
+        <div class="input-group-append">
+          <span class="input-group-text">F CFA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <label>Total</label>
+      <div class="input-group">
+        <input type="text" formControlName="Total" class="form-control" readonly />
+        <div class="input-group-append">
+          <span class="input-group-text">F CFA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-dark btn-save"> <i class="fa fa-database"></i> Enregister</button>
+    <button class="btn btn-outline-dark ml-1" type="button" (click)="viderChamps()"> <i class="fa fa-close"></i> Cancel</button>
+  </div>
+</form>

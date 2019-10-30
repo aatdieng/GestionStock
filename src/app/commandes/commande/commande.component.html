@@ -1,0 +1,71 @@
+<form [formGroup]="commandeForm">
+  <div class="form-row">
+    <div class="form-group col">
+      <label>CommandeNo</label>
+      <div class="input-group">
+        <div class="input-group-preprend">
+          <div class="input-group-text">#</div>
+        </div>
+        <input type="text" formControlName="CommandeNo" class="form-control" readonly />
+      </div>
+    </div>
+    <div class="form-group col">
+      <label>Numéro Table</label>
+      <select formControlName="TableID" class="form-control">
+        <option value="">--Choisir la table--</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <label>Méthode de paiement</label>
+      <select formControlName="PMethode" class="form-control">
+        <option value="">--Choisir le moyen de paiement--</option>
+        <option value="comptant">Argent Comptant</option>
+        <option value="carte">Carte de crédit</option>
+        <option value="om">Orange Money</option>
+      </select>
+    </div>
+    <div class="form-group col">
+      <label>Grand Total</label>
+      <div class="input-group">
+        <input type="text" formControlName="GTotal" class="form-control" readonly />
+        <div class="input-group-append">
+          <span class="input-group-text">F CFA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- produit table -->
+  <table class="table table-borderless">
+    <thead class="thead thead-light">
+      <th>Nom Produit</th>
+      <th>Prix</th>
+      <th>Quantité</th>
+      <th>Total</th>
+      <th>
+        <a class="btn btn-sm btn-success text-white" (click)="AjouterOuModifierProduit(null, commandeForm.get('CommandeID'))"><i class="fa fa-plus"></i> Ajouter un produit</a>
+      </th> 
+    </thead>
+    <tbody>
+      <tr *ngIf="detailsCommande.length == 0">
+        <td class="font-italic text-center" colspan="5">
+          Veuillez sélectionner un produit pour cette commande
+        </td>
+      </tr>
+      <tr *ngFor="let dtlcmd of detailsCommande; let i=index;">
+        <td>{{dtlcmd.NomProduit}}</td>
+        <td>{{dtlcmd.Prix}}</td>
+        <td>{{dtlcmd.Quantite}}</td>
+        <td>{{dtlcmd.Total}}</td>
+        <td>
+            <a class="btn btn-sm btn-info text-white" (click)="AjouterOuModifierProduit(i,commandeForm.get('CommandeID'))"><i class="fa fa-pencil"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="text-center">
+    <button type="submit" class="btn btn-dark btn-save"> <i class="fa fa-database"></i> Enregister</button>
+    <button class="btn btn-secondary" type="reset" (click)="viderChamps()">Cancel</button>
+  </div>
+</form>
