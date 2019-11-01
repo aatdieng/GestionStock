@@ -48,12 +48,12 @@
       </th> 
     </thead>
     <tbody>
-      <tr *ngIf="detailsCommande.length == 0">
+      <tr *ngIf="listeDetailsCommande.length == 0">
         <td class="font-italic text-center" colspan="5">
           Veuillez sélectionner un produit pour cette commande
         </td>
       </tr>
-      <tr *ngFor="let dtlcmd of detailsCommande; let i=index;">
+      <tr *ngFor="let dtlcmd of listeDetailsCommande; let i=index;">
         <td>{{dtlcmd.NomProduit}}</td>
         <td>{{dtlcmd.Prix}}</td>
         <td>{{dtlcmd.Quantite}}</td>

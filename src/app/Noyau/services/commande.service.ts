@@ -8,6 +8,6 @@ import { DetailsCommande } from '../modeles/details-commande';
 export class CommandeService {
 
   formData: Commande;
-  detailsCommande: DetailsCommande[];
+  detailsCommande: DetailsCommande[] = [];
   constructor() { }
 }

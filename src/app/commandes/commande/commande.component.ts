@@ -27,7 +27,7 @@ import {
 })
 export class CommandeComponent implements OnInit {
   commandeForm: FormGroup;
-  detailsCommande: DetailsCommande[];
+  listeDetailsCommande: DetailsCommande[];
 
   constructor(private serviceCommande: CommandeService, private fb: FormBuilder, private dialog: MatDialog) {}
 
@@ -43,7 +43,7 @@ export class CommandeComponent implements OnInit {
       PMethode: ['', Validators.required],
       GTotal: ['0']
     });
-    this.detailsCommande = [];
+    this.listeDetailsCommande = this.serviceCommande.detailsCommande;
   }
 
   viderChamps() {
