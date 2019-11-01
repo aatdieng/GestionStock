@@ -19,6 +19,8 @@ import {
 import {
   DetailsCommandeComponent
 } from '../details-commande/details-commande.component';
+import { TableService } from 'src/app/Noyau/services/table.service';
+import { Table } from 'src/app/Noyau/modeles/table';
 
 @Component({
   selector: 'app-commande',
@@ -28,11 +30,13 @@ import {
 export class CommandeComponent implements OnInit {
   commandeForm: FormGroup;
   listeDetailsCommande: DetailsCommande[];
+  listeTable: Table[];
 
-  constructor(private serviceCommande: CommandeService, private fb: FormBuilder, private dialog: MatDialog) {}
+  constructor(private serviceCommande: CommandeService, private fb: FormBuilder, private dialog: MatDialog,private tableService: TableService) {}
 
   ngOnInit() {
     this.initialiserFormulaire();
+    this.obtenirListeTable();
   }
 
   initialiserFormulaire() {
@@ -50,6 +54,9 @@ export class CommandeComponent implements OnInit {
     this.commandeForm.reset();
   }
 
+obtenirListeTable() {
+  this.tableService.obtenirListeTable().then(data => this.listeTable = data as Table[]);
+}
   AjouterOuModifierProduit(produitIndex, commandeID) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;

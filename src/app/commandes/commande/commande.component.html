@@ -13,6 +13,7 @@
       <label>Numéro Table</label>
       <select formControlName="TableID" class="form-control">
         <option value="">--Choisir la table--</option>
+        <option *ngFor="let table of listeTable" value="{{table.TableID}}"> {{table.NumeroTable}}  </option>
       </select>
     </div>
   </div>
